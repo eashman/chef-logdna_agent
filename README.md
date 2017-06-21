@@ -32,6 +32,12 @@ Attributes
     <td>(Optional) Comma-separated list of tags to apply to the host.</td>
     <td><tt>''</tt></td>
   </tr>
+    <tr>
+      <td><tt>['logdna_agent']['hostname']</tt></td>
+      <td>String</td>
+      <td>(Optional) Hostname override.</td>
+      <td><tt>''</tt></td>
+    </tr>
 </table>
 
 Usage

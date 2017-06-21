@@ -4,7 +4,7 @@ maintainer_email 'toby.sullivan@teespring.com'
 license          'All rights reserved'
 description      'Installs/Configures logdna-agent'
 long_description IO.read(File.join(File.dirname(__FILE__), 'README.md'))
-version          '0.2.0'
+version          '0.2.2'
 
 recipe 'logdna_agent::default', 'Installs the LogDNA host agent.'
 

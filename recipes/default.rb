@@ -52,6 +52,28 @@ node['logdna_agent']['log_directories'].each do |dir|
   end
 end
 
+unless node['logdna_agent']['log_files'].nil? || node['logdna_agent']['log_files'].empty?
+  node['logdna_agent']['log_files'].each do |file|
+    execute "add #{file} to logdna-agent" do
+      command "logdna-agent -f #{file}"
+    end
+  end
+end
+
+unless node['logdna_agent']['exclude_files'].nil? || node['logdna_agent']['exclude_files'].empty?
+  node['logdna_agent']['exclude_files'].each do |file|
+    execute "exclude #{file} from logdna-agent" do
+      command "logdna-agent -e #{file}"
+    end
+  end
+end
+
+unless node['logdna_agent']['hostname'].nil? || node['logdna_agent']['hostname'].empty?
+  execute "add hostname to logdna-agent" do
+    command "logdna-agent -n #{node['logdna_agent']['hostname']}"
+  end
+end
+
 unless node['logdna_agent']['tags'].nil? || node['logdna_agent']['tags'].empty?
   execute "add tags to logdna-agent" do
     command "logdna-agent -t #{node['logdna_agent']['tags']}"

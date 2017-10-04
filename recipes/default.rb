@@ -29,11 +29,7 @@ case node.platform
       gpgcheck false
       enabled true
     end
-    if ::File.exists?("/etc/init.d/logdna-agent")
-      execute "chkconfig --add logdna-agent && chkconfig --level 2345 logdna-agent on"
-    else
-      Chef::Log.warn("Cannot enable service, init script does not exist")
-    end
+    execute "chkconfig --add logdna-agent && chkconfig --level 2345 logdna-agent on"
 end
 
 execute 'run logdna-agent' do
